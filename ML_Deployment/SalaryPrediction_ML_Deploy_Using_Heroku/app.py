@@ -1,5 +1,6 @@
-import numpy as np
 import pickle
+
+import numpy as np
 from flask import Flask, request, render_template
 
 app = Flask(__name__)
@@ -17,8 +18,12 @@ def predict():
     For rendering results on HTML GUI
     '''
     int_features = [int(x) for x in request.form.values()]
+    print("int_featue : ", int_features)
     final_features = [np.array(int_features)]
+
+    print("final feature : ", final_features)
     prediction = model.predict(final_features)
+    print("prediction : ", prediction)
 
     output = round(prediction[0], 2)
 
